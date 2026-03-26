@@ -1,9 +1,216 @@
 [
   {
-    "category": "Math",
-    "question": "What is 2 + 2?",
-    "options": [2, 3, 4, 5],
-    "answer": 4,
+    "category": "frontend",
+    "question": "What does HTML stand for?",
+    "options": ["Hyper Trainer Marking Language", "Hyper Text Markup Language", "Hyper Text Marketing Language", "Hyper Tool Multi Language"],
+    "answer": "Hyper Text Markup Language",
     "difficulty": "easy"
+  },
+  {
+    "category": "frontend",
+    "question": "Which CSS property is used to change text color?",
+    "options": ["font-style", "color", "text-color", "background-color"],
+    "answer": "color",
+    "difficulty": "easy"
+  },
+  {
+    "category": "frontend",
+    "question": "What does the 'flex' display property do?",
+    "options": ["Creates a grid layout", "Aligns items in a flexible container", "Changes font size", "Adds animations"],
+    "answer": "Aligns items in a flexible container",
+    "difficulty": "medium"
+  },
+  {
+    "category": "frontend",
+    "question": "Which JavaScript method selects an element by ID?",
+    "options": ["querySelectorAll", "getElementById", "getElementsByClassName", "querySelector"],
+    "answer": "getElementById",
+    "difficulty": "medium"
+  },
+  {
+    "category": "frontend",
+    "question": "What is the Virtual DOM in React?",
+    "options": ["A direct copy of the real DOM", "A lightweight representation of the DOM", "A database for DOM elements", "A browser feature"],
+    "answer": "A lightweight representation of the DOM",
+    "difficulty": "hard"
+  },
+  {
+    "category": "frontend",
+    "question": "What is event delegation?",
+    "options": ["Assigning events to every element individually", "Handling events at a parent level", "Removing event listeners", "Using async events"],
+    "answer": "Handling events at a parent level",
+    "difficulty": "hard"
+  },
+
+  {
+    "category": "backend",
+    "question": "What does API stand for?",
+    "options": ["Application Programming Interface", "Advanced Programming Interface", "Application Process Integration", "Automated Program Interaction"],
+    "answer": "Application Programming Interface",
+    "difficulty": "easy"
+  },
+  {
+    "category": "backend",
+    "question": "Which HTTP method is used to retrieve data?",
+    "options": ["POST", "GET", "PUT", "DELETE"],
+    "answer": "GET",
+    "difficulty": "easy"
+  },
+  {
+    "category": "backend",
+    "question": "What is REST?",
+    "options": ["A database system", "A programming language", "An architectural style for APIs", "A frontend framework"],
+    "answer": "An architectural style for APIs",
+    "difficulty": "medium"
+  },
+  {
+    "category": "backend",
+    "question": "What does middleware do?",
+    "options": ["Stores data", "Handles requests between client and server", "Builds UI", "Manages CSS"],
+    "answer": "Handles requests between client and server",
+    "difficulty": "medium"
+  },
+  {
+    "category": "backend",
+    "question": "What is database indexing?",
+    "options": ["Deleting old data", "Organizing data for faster queries", "Encrypting data", "Backing up data"],
+    "answer": "Organizing data for faster queries",
+    "difficulty": "hard"
+  },
+  {
+    "category": "backend",
+    "question": "What is a microservice architecture?",
+    "options": ["A single large application", "Multiple small independent services", "A frontend design pattern", "A database model"],
+    "answer": "Multiple small independent services",
+    "difficulty": "hard"
+  },
+
+  {
+    "category": "gaming",
+    "question": "What is FPS in gaming?",
+    "options": ["Frames Per Second", "Fast Play System", "Full Power System", "First Play Style"],
+    "answer": "Frames Per Second",
+    "difficulty": "easy"
+  },
+  {
+    "category": "gaming",
+    "question": "Which company created the PlayStation?",
+    "options": ["Microsoft", "Sony", "Nintendo", "Valve"],
+    "answer": "Sony",
+    "difficulty": "easy"
+  },
+  {
+    "category": "gaming",
+    "question": "What is a game engine?",
+    "options": ["A console", "A software framework for building games", "A GPU", "A game controller"],
+    "answer": "A software framework for building games",
+    "difficulty": "medium"
+  },
+  {
+    "category": "gaming",
+    "question": "What is latency in online gaming?",
+    "options": ["Graphics quality", "Delay between input and response", "Sound effects", "Game difficulty"],
+    "answer": "Delay between input and response",
+    "difficulty": "medium"
+  },
+  {
+    "category": "gaming",
+    "question": "What is ray tracing?",
+    "options": ["A sound effect", "A rendering technique for realistic lighting", "A game mode", "A physics engine"],
+    "answer": "A rendering technique for realistic lighting",
+    "difficulty": "hard"
+  },
+  {
+    "category": "gaming",
+    "question": "What is procedural generation?",
+    "options": ["Manual level design", "Random content generation using algorithms", "Multiplayer syncing", "AI training"],
+    "answer": "Random content generation using algorithms",
+    "difficulty": "hard"
+  },
+
+  {
+    "category": "algorithms",
+    "question": "What is an algorithm?",
+    "options": ["A programming language", "A step-by-step procedure to solve a problem", "A database", "A UI component"],
+    "answer": "A step-by-step procedure to solve a problem",
+    "difficulty": "easy"
+  },
+  {
+    "category": "algorithms",
+    "question": "What is a loop?",
+    "options": ["A condition", "Repeating a block of code", "A variable", "A function"],
+    "answer": "Repeating a block of code",
+    "difficulty": "easy"
+  },
+  {
+    "category": "algorithms",
+    "question": "What is Big-O notation?",
+    "options": ["A coding style", "A way to measure algorithm efficiency", "A database query", "A loop type"],
+    "answer": "A way to measure algorithm efficiency",
+    "difficulty": "medium"
+  },
+  {
+    "category": "algorithms",
+    "question": "Which sorting algorithm is the fastest on average?",
+    "options": ["Bubble Sort", "Quick Sort", "Insertion Sort", "Selection Sort"],
+    "answer": "Quick Sort",
+    "difficulty": "medium"
+  },
+  {
+    "category": "algorithms",
+    "question": "What is recursion?",
+    "options": ["Looping manually", "A function calling itself", "Sorting data", "Memory allocation"],
+    "answer": "A function calling itself",
+    "difficulty": "hard"
+  },
+  {
+    "category": "algorithms",
+    "question": "What is dynamic programming?",
+    "options": ["Writing fast code", "Breaking problems into subproblems and storing results", "Using multiple threads", "Optimizing UI"],
+    "answer": "Breaking problems into subproblems and storing results",
+    "difficulty": "hard"
+  },
+
+  {
+    "category": "agile methods",
+    "question": "What is Agile?",
+    "options": ["A programming language", "A project management methodology", "A database", "A testing tool"],
+    "answer": "A project management methodology",
+    "difficulty": "easy"
+  },
+  {
+    "category": "agile methods",
+    "question": "What is a sprint?",
+    "options": ["A bug fix", "A short development cycle", "A meeting", "A release"],
+    "answer": "A short development cycle",
+    "difficulty": "easy"
+  },
+  {
+    "category": "agile methods",
+    "question": "What is Scrum?",
+    "options": ["A coding language", "An Agile framework", "A database system", "A UI library"],
+    "answer": "An Agile framework",
+    "difficulty": "medium"
+  },
+  {
+    "category": "agile methods",
+    "question": "What is a backlog?",
+    "options": ["Finished tasks", "List of tasks to be done", "Bug reports only", "UI components"],
+    "answer": "List of tasks to be done",
+    "difficulty": "medium"
+  },
+  {
+    "category": "agile methods",
+    "question": "What is a retrospective?",
+    "options": ["Planning meeting", "Reviewing past work to improve", "Coding session", "Testing phase"],
+    "answer": "Reviewing past work to improve",
+    "difficulty": "hard"
+  },
+  {
+    "category": "agile methods",
+    "question": "What is continuous integration?",
+    "options": ["Manual deployment", "Regularly merging code into a shared repository", "Testing UI", "Writing documentation"],
+    "answer": "Regularly merging code into a shared repository",
+    "difficulty": "hard"
   }
 ]
