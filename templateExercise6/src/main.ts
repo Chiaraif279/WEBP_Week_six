@@ -1,4 +1,5 @@
 import { loadQuestions, getQuizQuestions, Question } from "./module/questions.js";
+import * as Scoring from "./module/scoring.js";
 
 
 async function startQuiz() {
