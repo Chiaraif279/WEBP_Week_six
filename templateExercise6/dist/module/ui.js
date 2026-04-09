@@ -23,7 +23,13 @@ export function showPlayerInput(onStart) {
 export function showQuestion(questionObj, onAnswerSelected) {
     container.innerHTML = `
     <h2 class="question-text mb-3">${questionObj.question}</h2>
-    ${questionObj.options.map(a => `<button class="btn btn-answer d-block mb-2">${a}</button>`).join("")}
+    <div class="row">
+    ${questionObj.options.map(a => `
+      <div class="col-6 mb-2">
+        <button class="btn btn-answer w-100 h-100">${a}</button>
+      </div>
+    `).join("")}
+    </div> 
   `;
     container.querySelectorAll(".btn-answer").forEach(btn => {
         btn.addEventListener("click", () => onAnswerSelected(btn.textContent));
