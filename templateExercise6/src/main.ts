@@ -11,6 +11,7 @@ let quizQuestions: Question[] = [];
 let currentPlayer: Player;
 let currentIndex = 0;
 let givenAnswers: string[] = [];
+UI.showLeaderboard();
 
 // Quiz starten
 UI.showPlayerInput(async (name: string) => {
@@ -44,12 +45,16 @@ function showNextQuestion() {
     storePointsAndScore(quizQuestions, givenAnswers, currentPlayer);
     
     UI.showFinalResult(currentPlayer, restartQuiz);
-    UI.showLeaderboard(currentPlayer);
+ 
   }
 }
 
 // Quiz neustarten
 function restartQuiz() {
+  const quizContainer = document.getElementById("quiz-container")!;
+  quizContainer.style.display = "none";
+  const cardBody = quizContainer.querySelector(".card-body")!;
+  
   currentIndex = 0;
   givenAnswers = [];
   quizQuestions = getQuizQuestions(allQuestions);

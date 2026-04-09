@@ -9,6 +9,7 @@ let quizQuestions = [];
 let currentPlayer;
 let currentIndex = 0;
 let givenAnswers = [];
+UI.showLeaderboard();
 // Quiz starten
 UI.showPlayerInput(async (name) => {
     currentPlayer = { name, score: 0, points: 0, maxPoints: MAX_POINTS };
@@ -36,11 +37,13 @@ function showNextQuestion() {
         // Quiz beendet → Score berechnen
         storePointsAndScore(quizQuestions, givenAnswers, currentPlayer);
         UI.showFinalResult(currentPlayer, restartQuiz);
-        UI.showLeaderboard(currentPlayer);
     }
 }
 // Quiz neustarten
 function restartQuiz() {
+    const quizContainer = document.getElementById("quiz-container");
+    quizContainer.style.display = "none";
+    const cardBody = quizContainer.querySelector(".card-body");
     currentIndex = 0;
     givenAnswers = [];
     quizQuestions = getQuizQuestions(allQuestions);
