@@ -23,6 +23,7 @@ export function showPlayerInput(onStart) {
 export function showQuestion(questionObj, onAnswerSelected) {
     container.innerHTML = `
     <h2 class="question-text mb-3">${questionObj.question}</h2>
+    <h5 class="mb-3">Category: ${questionObj.category} | Difficulty: ${questionObj.difficulty}</h5>
     <div class="row">
     ${questionObj.options.map(a => `
       <div class="col-6 mb-2">
@@ -73,7 +74,7 @@ export function showLeaderboard(currentPlayer) {
     for (const p of leaderboard) {
         const item = document.createElement("li");
         item.className = "list-group-item";
-        item.textContent = `${p.name}: ${p.score}%`;
+        item.textContent = `${p.name}: ${p.points} points (${p.score}%)`;
         list.appendChild(item);
     }
     leaderboardDiv.appendChild(list);
