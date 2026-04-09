@@ -1,10 +1,8 @@
-let questions = [];
 export async function loadQuestions() {
     try {
         const response = await fetch("./questions.json");
         const data = await response.json();
-        questions = data;
-        return questions;
+        return data;
     }
     catch (error) {
         console.log("Error loading questions: ", error);

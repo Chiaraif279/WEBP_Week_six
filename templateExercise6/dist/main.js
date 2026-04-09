@@ -1,26 +1,22 @@
 import { loadQuestions, getQuizQuestions } from "./module/questions.js";
 import { storePointsAndScore, MAX_POINTS } from "./module/scoring.js";
 import * as UI from "./module/ui.js";
-// Initialisiere UI-Container
-UI.initUI();
-// Quiz-Variablen
 let allQuestions = [];
 let quizQuestions = [];
 let currentPlayer;
 let currentIndex = 0;
 let givenAnswers = [];
+UI.initUI();
 UI.showLeaderboard();
 // Quiz starten
 UI.showPlayerInput(async (name) => {
     currentPlayer = { name, score: 0, points: 0, maxPoints: MAX_POINTS };
-    // Fragen laden
     allQuestions = await loadQuestions();
     quizQuestions = getQuizQuestions(allQuestions);
     currentIndex = 0;
     givenAnswers = [];
     showNextQuestion();
 });
-// Nächste Frage anzeigen
 function showNextQuestion() {
     if (currentIndex < quizQuestions.length) {
         const question = quizQuestions[currentIndex];
@@ -34,17 +30,15 @@ function showNextQuestion() {
         });
     }
     else {
-        // Quiz beendet → Score berechnen
+        // Quiz beendet
         storePointsAndScore(quizQuestions, givenAnswers, currentPlayer);
         UI.showFinalResult(currentPlayer, restartQuiz);
         UI.showLeaderboard(currentPlayer);
     }
 }
-// Quiz neustarten
 function restartQuiz() {
     const quizContainer = document.getElementById("quiz-container");
     quizContainer.style.display = "none";
-    const cardBody = quizContainer.querySelector(".card-body");
     currentIndex = 0;
     givenAnswers = [];
     quizQuestions = getQuizQuestions(allQuestions);

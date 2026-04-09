@@ -7,15 +7,11 @@ export interface Question{
     difficulty: string;
 }
 
-let questions: Question[] = [];
-
 export async function loadQuestions(): Promise<Question[]> {
     try{
         const response = await fetch("./questions.json");
         const data: Question [] = await response.json();
-        
-        questions = data;
-        return questions;
+        return data;
     } catch (error) {
         console.log("Error loading questions: ", error);
         return[];
