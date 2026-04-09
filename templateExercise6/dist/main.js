@@ -37,6 +37,7 @@ function showNextQuestion() {
         // Quiz beendet → Score berechnen
         storePointsAndScore(quizQuestions, givenAnswers, currentPlayer);
         UI.showFinalResult(currentPlayer, restartQuiz);
+        UI.showLeaderboard(currentPlayer);
     }
 }
 // Quiz neustarten

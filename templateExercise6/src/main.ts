@@ -45,6 +45,8 @@ function showNextQuestion() {
     storePointsAndScore(quizQuestions, givenAnswers, currentPlayer);
     
     UI.showFinalResult(currentPlayer, restartQuiz);
+    UI.showLeaderboard(currentPlayer);
+
  
   }
 }
