@@ -1,0 +1,21 @@
+body{
+    background-color: rgb(142, 202, 230);
+}
+ #quiz-container{
+    background-color: rgb(253, 247, 193);
+ }
+
+ .question-text{
+    color: rgb(2, 48, 71);
+ }
+
+ .btn-answer {
+  background-color: rgb(33, 158, 188) ;
+  border-color:  rgb(33, 158, 188);
+  color: white; /*text colour*/
+}
+
+.btn-answer:hover {
+  background-color: rgb(251, 133, 0) ;
+  border-color: rgb(251, 133, 0);
+}
