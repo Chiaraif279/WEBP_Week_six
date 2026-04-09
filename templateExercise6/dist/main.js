@@ -49,6 +49,7 @@ function restartQuiz() {
     quizQuestions = getQuizQuestions(allQuestions);
     UI.showPlayerInput((name) => {
         currentPlayer = { name, score: 0, points: 0, maxPoints: MAX_POINTS };
+        quizContainer.style.display = "block";
         showNextQuestion();
     });
 }
