@@ -12,7 +12,7 @@ export function initUI() {
 export function showPlayerInput(onStart: (name: string) => void) {
   const inputDiv = document.getElementById("player-input")!;
   inputDiv.innerHTML = `
-    <input type="text" id="player-name" class="form-control mb-2" placeholder="Dein Name">
+    <input type="text" id="player-name" class="form-control mb-2" placeholder="Your Name">
     <button class="btn btn-primary">Start</button>
   `;
 
@@ -41,9 +41,9 @@ export function showFeedback(isCorrect: boolean, correctAnswer: string, onNext: 
   container.innerHTML += `
     <div class="mt-3">
       <p class="${isCorrect ? "text-success" : "text-danger"}">
-        ${isCorrect ? "Richtig!" : `Falsch! Richtige Antwort: ${correctAnswer}`}
+        ${isCorrect ? "Right!" : `Wrong! Right answer: ${correctAnswer}`}
       </p>
-      <button class="btn btn-primary mt-2" id="next-btn">Weiter</button>
+      <button class="btn btn-primary mt-2" id="next-btn">Next</button>
     </div>
   `;
   document.getElementById("next-btn")!.addEventListener("click", onNext);
@@ -51,11 +51,11 @@ export function showFeedback(isCorrect: boolean, correctAnswer: string, onNext: 
 
 export function showFinalResult(player: Player, onRestart: () => void) {
   container.innerHTML = `
-    <h2>Ergebnis</h2>
+    <h2>Result</h2>
     <p><strong>Name:</strong> ${player.name}</p>
-    <p><strong>Punkte:</strong> ${player.points} / ${player.maxPoints}</p>
+    <p><strong>Points:</strong> ${player.points} / ${player.maxPoints}</p>
     <p><strong>Score:</strong> ${player.score} %</p>
-    <button class="btn btn-success mt-3" id="restart-btn">Neustart</button>
+    <button class="btn btn-success mt-3" id="restart-btn">New Game</button>
   `;
   document.getElementById("restart-btn")!.addEventListener("click", onRestart);
 }

@@ -46,8 +46,6 @@ function showNextQuestion() {
     
     UI.showFinalResult(currentPlayer, restartQuiz);
     UI.showLeaderboard(currentPlayer);
-
- 
   }
 }
 
