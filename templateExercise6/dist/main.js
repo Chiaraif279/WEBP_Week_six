@@ -1,51 +1,51 @@
-import { UI } from "./module/ui.js";
 import { loadQuestions, getQuizQuestions } from "./module/questions.js";
-import { storePointsAndScore } from "./module/scoring.js";
-const ui = new UI();
-let player;
+import { storePointsAndScore, MAX_POINTS } from "./module/scoring.js";
+import * as UI from "./module/ui.js";
+// Initialisiere UI-Container
+UI.initUI();
+// Quiz-Variablen
+let allQuestions = [];
+let quizQuestions = [];
+let currentPlayer;
 let currentIndex = 0;
 let givenAnswers = [];
-let selectedQuestions = [];
-// Funktion, um die nächste Frage anzuzeigen
+// Quiz starten
+UI.showPlayerInput(async (name) => {
+    currentPlayer = { name, score: 0, points: 0, maxPoints: MAX_POINTS };
+    // Fragen laden
+    allQuestions = await loadQuestions();
+    quizQuestions = getQuizQuestions(allQuestions);
+    currentIndex = 0;
+    givenAnswers = [];
+    showNextQuestion();
+});
+// Nächste Frage anzeigen
 function showNextQuestion() {
-    if (currentIndex < selectedQuestions.length) {
-        const question = selectedQuestions[currentIndex];
-        ui.showQuestion(question, (answer) => {
+    if (currentIndex < quizQuestions.length) {
+        const question = quizQuestions[currentIndex];
+        UI.showQuestion(question, (answer) => {
             givenAnswers.push(answer);
             const isCorrect = answer === question.answer;
-            ui.showFeedback(isCorrect, question.answer, () => {
+            UI.showFeedback(isCorrect, question.answer, () => {
                 currentIndex++;
                 showNextQuestion();
             });
         });
     }
     else {
-        // Quiz fertig → Punkte berechnen
-        storePointsAndScore(selectedQuestions, givenAnswers, player);
-        ui.showFinalResult(player, restartQuiz);
-        ui.showLeaderboard(player);
+        // Quiz beendet → Score berechnen
+        storePointsAndScore(quizQuestions, givenAnswers, currentPlayer);
+        UI.showFinalResult(currentPlayer, restartQuiz);
+        UI.showLeaderboard(currentPlayer);
     }
 }
-// Neustart-Funktion
+// Quiz neustarten
 function restartQuiz() {
     currentIndex = 0;
     givenAnswers = [];
-    player.score = 0;
-    player.points = 0;
-    player.maxPoints = 0;
-    startQuiz();
-}
-// Quiz starten: Fragen laden und Spielername eingeben
-async function startQuiz() {
-    const allQuestions = await loadQuestions();
-    selectedQuestions = getQuizQuestions(allQuestions);
-    currentIndex = 0;
-    givenAnswers = [];
-    ui.showPlayerInput((name) => {
-        player = { name, score: 0, points: 0, maxPoints: 0 };
+    quizQuestions = getQuizQuestions(allQuestions);
+    UI.showPlayerInput((name) => {
+        currentPlayer = { name, score: 0, points: 0, maxPoints: MAX_POINTS };
         showNextQuestion();
-        ui.showLeaderboard(player);
     });
 }
-// Programmstart
-startQuiz();

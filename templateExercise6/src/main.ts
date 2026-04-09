@@ -1,60 +1,61 @@
-import { UI } from "./module/ui.js";
 import { loadQuestions, getQuizQuestions, Question } from "./module/questions.js";
-import { Player, storePointsAndScore } from "./module/scoring.js";
+import { Player, storePointsAndScore, MAX_POINTS } from "./module/scoring.js";
+import * as UI from "./module/ui.js";
 
-const ui = new UI();
+// Initialisiere UI-Container
+UI.initUI();
 
-let player: Player;
+// Quiz-Variablen
+let allQuestions: Question[] = [];
+let quizQuestions: Question[] = [];
+let currentPlayer: Player;
 let currentIndex = 0;
 let givenAnswers: string[] = [];
-let selectedQuestions: Question[] = [];
 
-// Funktion, um die nächste Frage anzuzeigen
+// Quiz starten
+UI.showPlayerInput(async (name: string) => {
+  currentPlayer = { name, score: 0, points: 0, maxPoints: MAX_POINTS };
+  
+  // Fragen laden
+  allQuestions = await loadQuestions();
+  quizQuestions = getQuizQuestions(allQuestions);
+
+  currentIndex = 0;
+  givenAnswers = [];
+  
+  showNextQuestion();
+});
+
+// Nächste Frage anzeigen
 function showNextQuestion() {
-  if (currentIndex < selectedQuestions.length) {
-    const question = selectedQuestions[currentIndex];
-
-    ui.showQuestion(question, (answer) => {
+  if (currentIndex < quizQuestions.length) {
+    const question = quizQuestions[currentIndex];
+    UI.showQuestion(question, (answer: string) => {
       givenAnswers.push(answer);
       const isCorrect = answer === question.answer;
 
-      ui.showFeedback(isCorrect, question.answer, () => {
+      UI.showFeedback(isCorrect, question.answer, () => {
         currentIndex++;
         showNextQuestion();
       });
     });
   } else {
-    // Quiz fertig → Punkte berechnen
-    storePointsAndScore(selectedQuestions, givenAnswers, player);
-    ui.showFinalResult(player, restartQuiz);
-    ui.showLeaderboard(player);
+    // Quiz beendet → Score berechnen
+    storePointsAndScore(quizQuestions, givenAnswers, currentPlayer);
+    
+    UI.showFinalResult(currentPlayer, restartQuiz);
+    UI.showLeaderboard(currentPlayer);
   }
 }
 
-// Neustart-Funktion
+// Quiz neustarten
 function restartQuiz() {
   currentIndex = 0;
   givenAnswers = [];
-  player.score = 0;
-  player.points = 0;
-  player.maxPoints = 0;
-
-  startQuiz();
-}
-
-// Quiz starten: Fragen laden und Spielername eingeben
-async function startQuiz() {
-  const allQuestions: Question[] = await loadQuestions();
-  selectedQuestions = getQuizQuestions(allQuestions);
-  currentIndex = 0;
-  givenAnswers = [];
-
-  ui.showPlayerInput((name: string) => {
-    player = { name, score: 0, points: 0, maxPoints: 0 };
+  quizQuestions = getQuizQuestions(allQuestions);
+  
+  UI.showPlayerInput((name: string) => {
+    currentPlayer = { name, score: 0, points: 0, maxPoints: MAX_POINTS };
     showNextQuestion();
-    ui.showLeaderboard(player);
   });
 }
-
-// Programmstart
-startQuiz();
